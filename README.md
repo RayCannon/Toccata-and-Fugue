@@ -31,7 +31,7 @@ As each voice is generated, a matrix of bits is built up. In one dimension one b
 
 The APL function "PlayIt" is used to play the sound and animation in sync. The WAV file is played back via Microsoft Window's built-in function "PlaySound". The animation is displayed via Dyalog's system function graphics. A portion of the matrix of bits is expanded into the "CBits" of a BitMap. As the music is played, the portion of the matrix selected is moved on by one pixel. So long as the computer running this code is fast enough to refresh the BitMap at a faster rate than the music being played, the animation is kept in sync with the music.
 
-In addition to the APL workspace, I have included a copy of the sound file (converted from WAV into a MP3 file, as the WAV file is too big for Github). An MP4 file at 70MB was way too big, but I will add a link to YouTube once uploaded.
+In addition to the APL workspace, I have included a copy of the sound file (converted from WAV into a MP3 file, as the WAV file is too big for Github). An MP4 file at 70MB was way too big, but is available on YouTube at https://youtu.be/M_NypHXHfls
 
 Some functions of note within the workspace are listed below:
 
