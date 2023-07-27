@@ -11,9 +11,9 @@ To this is added reverberation, in an attempt to add the ambiance of a typical l
 
 As a result, each of the 20 million odd samples may have 100's of components contributing to its value. Before being written to the WAV file, the values are normalised to be in the 32 bit range required by the file format.
 
-The data required to "power" the music has been provided in 143 APL function, one function for each musical bar (or measure). Each of these APL functions will typically divide the bar into up to 128 units. the length (in time) of each unit will depend on the "Tempo" at that moment within the piece. Where the tempo changes within a bar, I sometimes split the bar between two functions.
+The data required to "power" the music has been provided in 143 APL function, one function for each musical bar (or measure). Each of these APL functions will typically divide the bar into up to 128 units. The length (in time) of each unit will depend on the "Tempo" at that moment within the piece. Where the tempo changes within a bar, I split the bar between two functions.
 
-Within a bar/function, I re-define the tempo (normally specified in a number of "beats per minute") as the number of samples per 1/128 of the bar.  I re-use the names used for Tempo's in classical music, but with specific BPM, rather than the very vague values in common use (E.G. Andante can vary between 70 to 108 bpm, I have set it to 75) . The Tempo remains the constant for the function. The function is then split into "voices".
+Within a bar/function, I re-define the tempo (normally specified as the number of "beats per minute") as the number of samples per 1/128 of the bar.  I re-use the names used for Tempo's in classical music, but with specific BPM, rather than the very vague values in common use (E.G. Andante can vary between 70 to 108 bpm, I have set it to 75) . The Tempo remains the constant for the function. The function is then split into "voices".
 
 Each voice will consist of a "pipe" name and a set of none-overlapping notes or cords. The Pipe defines the harmonics and the envelope used in the sound creation. Each note/cord will follow directly after the last note/cord has finished. Some of the notes can be silence (called a "rest" in musical terms). For each note/cord, 3 values are defined: Length, Loudness and Frequency.
 
@@ -21,11 +21,11 @@ The "Length" can be W:whole=128 units, H:half=64, Q:quarter=32, E:eighth=16, S:s
 
 The loudness is expressed using music terms such as p, mp, mf, f, ff, etc. Originally they differ by 10 decibels between term each term, so ranging from 20db for "ppp" to 90db for "fff". However, for practical reasons, I have reduces this dynamic range to about 60 db.
 
-The frequency of the notes, are defined in cycles per second (Hz) and given the names in the form of <letter><sharp or flat indicator> and <octave number>. So middle C (261.63 Hz) is "C4" using an equal temperament scale with A4 at 440Hz. (Other tunings are provided. Not that I can really tell the difference) To be valid names in APL, I have used "∆" for a sharp (rather than "#") and "_" for a flat.
+The frequency of the notes, are defined in cycles per second (Hz) and given the names in the form of {letter}{sharp or flat indicator} and {octave number}. So middle C (261.63 Hz) is "C4" using an equal temperament scale with A4 at 440Hz. (Other tunings are provided. Not that I can really tell the difference) To be valid names in APL, I have used "∆" for a sharp (rather than "#") and "_" for a flat.
 
-I used multiple voices to prevent the discontinuities (that would otherwise result in unwanted "snaps and pops") when waves interfere with each other, or overlap.
+I used multiple voices to prevent the discontinuities (that would otherwise result in unwanted "snaps and pops") when waves interfere with each other, or overlap. Also for when notes making up a single cord have different lengths.
 
-The animation has been added mainly to help me visually see where we are within the music, so when I hear an error, I can go to the function that caused the error.
+The animation has been added mainly to help me "see" where we are within the music, so when I hear an error, I know which function caused the error.
 
 As each voice is generated, a matrix of bits is built up. In one dimension one bit for every 3700 samples or 1/12 of a second, and the other for each note in the scale. Additional information relating to where exactly the bar/function changes, and the name of the function. The bit matrix and additional information is stored in an APL component file.
 
