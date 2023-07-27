@@ -19,7 +19,7 @@ Each voice will consist of a "pipe" name and a set of none-overlapping notes or 
 
 The "Length" can be W:whole=128 units, H:half=64, Q:quarter=32, E:eighth=16, S:sixteenth=8, T:thirty-second=4, F:sixty-fourth=2 or Z:1/128=1 unit.  Thus the length defines a specific number of samples, depending on the tempo.
 
-The loudness is expressed using music terms such as p, mp, mf, f, ff, etc. Originally they differ by 10 decibels between term each term, so ranging from 20db for "ppp" to 90db for "fff". However, for practical reasons, I have reduces this dynamic range to about 60 db.
+The loudness is expressed using music terms such as p, mp, mf, f, ff, etc. Originally they differ by 10 decibels between terms, so ranging from 20db for "ppp" to 90db for "fff". However, for practical reasons, I have reduces this dynamic range to about 60 db.
 
 The frequency of the notes, are defined in cycles per second (Hz) and given the names in the form of {letter}{sharp or flat indicator} and {octave number}. So middle C (261.63 Hz) is "C4" using an equal temperament scale with A4 at 440Hz. (Other tunings are provided. Not that I can really tell the difference) To be valid names in APL, I have used "∆" for a sharp (rather than "#") and "_" for a flat.
 
