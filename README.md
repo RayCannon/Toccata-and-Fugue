@@ -25,9 +25,9 @@ The frequency of the notes, are defined in cycles per second (Hz) and given the 
 
 I used multiple voices to prevent the discontinuities (that would otherwise result in unwanted "snaps and pops") when waves interfere with each other, or overlap. Also for when notes making up a single cord have different lengths.
 
-The animation has been added mainly to help me "see" where we are within the music, so when I hear an error, I know which function caused the error.
+The animation has been added mainly to help me "see" where we are within the music, so when I hear an error, I know which function caused the error. Origionally, the musical notes were all shown in a monocrome red, but now the colour of each note will depend on the pipe or pipes playing that note. This has the added benifit of highlighting different musical phrases, enhancing the whole experiance.
 
-As each voice is generated, a matrix of bits is built up. In one dimension one bit for every 3700 samples or 1/12 of a second, and the other for each note in the scale. Additional information relating to where exactly the bar/function changes, and the name of the function. The bit matrix and additional information is stored in an APL component file.
+As each voice is generated, a matrix of bits is built up. In one dimension one bit for every 3700 samples or 1/12 of a second, and the other for each note in the scale. Additional information relating to where exactly the bar/function changes, and the name of the function. The bit matrix and additional information is stored in an APL component file. When I added the pipe colour to the animation, this 2 dimensional matrix was simply replaced by a 3 dimensional table.
 
 The APL function "PlayIt" is used to play the sound and animation in sync. The WAV file is played back via Microsoft Window's built-in function "PlaySound". The animation is displayed via Dyalog's system function graphics. A portion of the matrix of bits is expanded into the "CBits" of a BitMap. As the music is played, the portion of the matrix selected is moved on by one pixel. So long as the computer running this code is fast enough to refresh the BitMap at a faster rate than the music being played, the animation is kept in sync with the music.
 
@@ -52,3 +52,5 @@ Some functions of note within the workspace are listed below:
 "BuildLR" This function combines all the voices within a bar and append them to either the left, right or both "channel" variables. Note both channels must have exactly the same number of samples.
 
 "Stereo" Combines the left and right channels into the single vector required by the WAV file and also normalises the absolute volume.
+
+"Reverberation" This function repeatedly adds a copy of the sound so far, but at a reduced amplitude, and with a delay, to reproduce the effects of a large enclosed space. It is very much a "work in progress", and contains "commented out" old code. 
